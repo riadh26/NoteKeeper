@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, NoteActivity.class));
             }
         });
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         initializeDisplayContent();
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initializeDisplayContent() {
-        mRecyclerItems = (RecyclerView) findViewById(R.id.list_items);
+        mRecyclerItems = findViewById(R.id.list_items);
         mNotesLayoutManager = new LinearLayoutManager(this);
-        mCoursesLayoutManager = new GridLayoutManager(this, 2);
+        mCoursesLayoutManager = new GridLayoutManager(this, getResources().getInteger(R.integer.courses_grid_span));
 
         List<NoteInfo> notes = DataManager.getInstance().getNotes();
         mNoteRecyclerAdapter = new NoteRecyclerAdapter(this, notes);
@@ -91,14 +91,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void selectNavigationMenuItem(int id) {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
         menu.findItem(id).setChecked(true);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -128,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -139,19 +138,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_courses) {
             displayCourses();
         } else if (id == R.id.nav_share) {
-            handleSelection("Don't you think you've shared enough");
+            handleSelection(R.string.nav_share_message);
         } else if (id == R.id.nav_send) {
-            handleSelection("Send");
+            handleSelection(R.string.nav_send_message);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private void handleSelection(String message) {
+    private void handleSelection(int message_id) {
         View view = findViewById(R.id.list_items);
-        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(view, message_id, Snackbar.LENGTH_LONG).show();
     }
 
 

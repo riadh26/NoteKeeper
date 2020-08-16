@@ -4,24 +4,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_notes"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Notes" />
+            android:icon="@drawable/ic_baseline_note_24"
+            android:title="@string/menu_item_notes_text" />
         <item
             android:id="@+id/nav_courses"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Courses" />
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_item_courses_text" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/menu_item_communicate_text">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@android:drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/menu_item_share_text" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@android:drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/menu_item_send_text" />
         </menu>
     </item>
 
