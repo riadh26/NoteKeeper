@@ -38,9 +38,6 @@ public class NoteKeeperProvider extends ContentProvider {
 
     private NoteKeeperOpenHelper mDbOpenHelper;
 
-    public NoteKeeperProvider() {
-    }
-
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         long rowId = -1;
