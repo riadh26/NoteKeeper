@@ -54,4 +54,8 @@
     <string name="pref_title_favorite_social">Favorite Social Network</string>
 
     <string name="default_favorite_social">https://facebook.com</string>
+    <string name="action_set_reminder">Set reminder</string>
+    <string name="action_send_as_email">Send as email</string>
+    <string name="action_next">Next</string>
+    <string name="action_cancel">Cancel</string>
 </resources>
